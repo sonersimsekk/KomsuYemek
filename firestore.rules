@@ -1,0 +1,63 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    match /users/{userId} {
+      allow read: if signedIn();
+      allow create, update, delete: if signedIn() && request.auth.uid == userId;
+    }
+
+    match /posts/{postId} {
+      allow read: if signedIn();
+
+      allow create: if signedIn()
+        && request.resource.data.sellerId == request.auth.uid
+        && request.resource.data.meal is string
+        && request.resource.data.meal.size() > 0
+        && request.resource.data.meal.size() < 120
+        && request.resource.data.stock is int
+        && request.resource.data.stock >= 0
+        && request.resource.data.price is number
+        && request.resource.data.price > 0
+        && request.resource.data.deliveryFee is number
+        && request.resource.data.deliveryFee >= 0
+        && request.resource.data.description is string
+        && request.resource.data.sellerName is string
+        && request.resource.data.comments is list
+        && (request.resource.data.image == null || request.resource.data.image is string);
+
+      allow update: if signedIn() && (
+        (
+          resource.data.sellerId == request.auth.uid
+          && request.resource.data.sellerId == resource.data.sellerId
+        )
+        || (
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['comments'])
+          && request.resource.data.comments is list
+          && request.resource.data.comments.size() >= resource.data.comments.size()
+        )
+        || (
+          request.resource.data.diff(resource.data).affectedKeys().hasOnly(['stock'])
+          && request.resource.data.stock is int
+          && request.resource.data.stock >= 0
+          && request.resource.data.stock <= resource.data.stock
+        )
+      );
+
+      allow delete: if signedIn() && resource.data.sellerId == request.auth.uid;
+    }
+
+    match /orders/{orderId} {
+      allow read: if signedIn() && resource.data.userId == request.auth.uid;
+      allow create: if signedIn()
+        && request.resource.data.userId == request.auth.uid
+        && request.resource.data.items is list
+        && request.resource.data.total is number
+        && request.resource.data.status == 'alındı';
+      allow update, delete: if false;
+    }
+  }
+}
