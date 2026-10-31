@@ -1,0 +1,42 @@
+{
+  "expo": {
+    "name": "Komşu Yemek",
+    "slug": "ev-yemegi-app",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Yemek fotoğrafı seçmek için galeri erişimine izin verin.",
+          "cameraPermission": "Yemek fotoğrafı çekmek için kameraya izin verin."
+        }
+      ]
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Yemek fotoğrafı çekmek için kameraya izin verin.",
+        "NSPhotoLibraryUsageDescription": "Yemek fotoğrafı seçmek için galeri erişimine izin verin."
+      }
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "permissions": ["CAMERA"]
+    },
+    "web": {
+      "favicon": "./assets/favicon.png"
+    }
+  }
+}
