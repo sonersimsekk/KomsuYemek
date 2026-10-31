@@ -12,28 +12,14 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "plugins": [
-      [
-        "expo-image-picker",
-        {
-          "photosPermission": "Yemek fotoğrafı seçmek için galeri erişimine izin verin.",
-          "cameraPermission": "Yemek fotoğrafı çekmek için kameraya izin verin."
-        }
-      ]
-    ],
     "ios": {
-      "supportsTablet": true,
-      "infoPlist": {
-        "NSCameraUsageDescription": "Yemek fotoğrafı çekmek için kameraya izin verin.",
-        "NSPhotoLibraryUsageDescription": "Yemek fotoğrafı seçmek için galeri erişimine izin verin."
-      }
+      "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      },
-      "permissions": ["CAMERA"]
+      }
     },
     "web": {
       "favicon": "./assets/favicon.png"

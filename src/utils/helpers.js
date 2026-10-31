@@ -57,7 +57,6 @@ export function toUserMessage(error) {
     'permission-denied':
       'Firebase izinleri bu işlemi engelledi. Firestore ve Storage kurallarının yayınlanmış olması gerekir.',
     unavailable: 'Sunucuya ulaşılamadı. İnternet bağlantınızı kontrol edin.',
-    'storage/unauthorized': 'Fotoğraf yüklenemedi. Storage kurallarını kontrol edin.',
   };
 
   if (messages[code]) return messages[code];
