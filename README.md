@@ -45,7 +45,6 @@ These screenshots show the current Android prototype. Sample listing content and
 - **Language:** JavaScript
 - **Backend services:** Firebase
 - **Navigation:** React Navigation
-- **Media selection dependency:** Expo Image Picker
 
 > The exact Firebase services, configuration variables, and supported authentication providers should be checked against the current source code before documenting them in detail.
 
@@ -102,7 +101,7 @@ These are **ideas and planned improvements**, not claims of implemented function
 
 - [GitHub](https://github.com/sonersimsekk)
 - [GitLab](https://gitlab.com/sonersimsek)
-- [LinkedIn](https://www.linkedin.com/in/sonersimsekk1)
+- [LinkedIn](https://www.linkedin.com/in/soner-şimşek-653357273)
 
 ---
 
